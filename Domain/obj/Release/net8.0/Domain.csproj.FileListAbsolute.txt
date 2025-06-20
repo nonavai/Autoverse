@@ -1,0 +1,12 @@
+C:\rider\c#projects\Autoverse\Autoverse\Domain\bin\Release\net8.0\Domain.deps.json
+C:\rider\c#projects\Autoverse\Autoverse\Domain\bin\Release\net8.0\Domain.dll
+C:\rider\c#projects\Autoverse\Autoverse\Domain\bin\Release\net8.0\Domain.pdb
+C:\rider\c#projects\Autoverse\Autoverse\Domain\obj\Release\net8.0\Domain.csproj.AssemblyReference.cache
+C:\rider\c#projects\Autoverse\Autoverse\Domain\obj\Release\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\rider\c#projects\Autoverse\Autoverse\Domain\obj\Release\net8.0\Domain.AssemblyInfoInputs.cache
+C:\rider\c#projects\Autoverse\Autoverse\Domain\obj\Release\net8.0\Domain.AssemblyInfo.cs
+C:\rider\c#projects\Autoverse\Autoverse\Domain\obj\Release\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\rider\c#projects\Autoverse\Autoverse\Domain\obj\Release\net8.0\Domain.dll
+C:\rider\c#projects\Autoverse\Autoverse\Domain\obj\Release\net8.0\refint\Domain.dll
+C:\rider\c#projects\Autoverse\Autoverse\Domain\obj\Release\net8.0\Domain.pdb
+C:\rider\c#projects\Autoverse\Autoverse\Domain\obj\Release\net8.0\ref\Domain.dll

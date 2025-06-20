@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres-db
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_PASSWORD: StrongPgPassword!23
+      POSTGRES_DB: appdb
+      POSTGRES_USER: appuser 
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts/postgres/:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appuser -d appdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    expose:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: StrongMyPassword!23
+      MYSQL_DATABASE: appdb
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: StrongMyPassword!23
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-scripts/mysql/:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "appuser", "-pStrongMyPassword!23"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis-cache
+    expose:
+      - "6379"
+    volumes:
+      - redis_data:/data
+    command: ["redis-server", "--appendonly", "yes"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      retries: 5
+    networks:
+      - app-network
+
+  autoverse:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: autoverse
+    ports:
+      - "80:80"  
+      - "443:443" 
+    environment:
+      - "ASPNETCORE_URLS=http://+:80"
+      - "ASPNETCORE_ENVIRONMENT=Docker"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+    driver: local
+  mysql_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge

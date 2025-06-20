@@ -1,0 +1,36 @@
+﻿namespace Domain.Enums;
+
+public enum BodyType
+{
+    Roadster,
+    Hatchback3Door,
+    Convertible,
+    Coupe,
+    SUV5Door,
+    Sedan,
+    Hatchback5Door,
+    Wagon5Door,
+    Sedan2Door,
+    Targa,
+    Wagon3Door,
+    CoupeHardtop,
+    Liftback,
+    PickupDoubleCab,
+    SUV3Door,
+    CompactVan,
+    OpenSUV,
+    Minivan,
+    Speedster,
+    Limousine,
+    Fastback,
+    Hatchback4Door,
+    PickupSingleCab,
+    Wagon,
+    SedanHardtop,
+    MicroVan,
+    PickupExtendedCab,
+    Van,
+    Phaeton,
+    PhaetonWagon,
+    None
+}
